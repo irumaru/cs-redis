@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    image: "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm"
+    volumes:
+      - ../:/workspaces/cs-redis
+    working_dir: /workspaces/cs-redis
+    environment:
+      - REDIS_URL=db
+    tty: true
+    command: sleep infinity
+  db:
+    image: "redis:7"
+    ports:
+      - "6379:6379"
